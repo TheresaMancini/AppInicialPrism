@@ -31,6 +31,7 @@ namespace AppInicialPrism
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<DetalhePage>();
         }
     }
 }

@@ -1,11 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:AppInicialPrism.Controls"
              x:Class="AppInicialPrism.Views.MainPage"
              Title="{Binding Title}">
 
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="Welcome to Xamarin Forms and Prism!" />
-    </StackLayout>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label 
+                Margin="5" 
+                Text="Cadastro"
+                FontSize="Large"/>
+                <Entry
+                Text="{Binding NomePessoa}"
+                Placeholder="Nome"/>
+                <Entry
+                Placeholder="CPF"
+                Text="{Binding CPFPessoa}"/>
+                <Button
+                BackgroundColor="#58ab41"
+                TextColor="White"
+                Text="CONFIRMAR"
+                Command="{Binding ClickButton}"/>
+
+                <BoxView
+                Margin="5"
+                HeightRequest="1"
+                BackgroundColor="LightGray"/>
+                <Label
+                Margin="5"
+                Text="Lista de Pessoas"
+                FontSize="Large"/>
+
+                <controls:CustomListView
+                SeparatorVisibility="None"
+                RowHeight="80"
+                x:Name="listagem"
+                ItemTappedCommand="{Binding ClickedItem}"
+                ItemsSource="{Binding ListaPessoas}">
+                    <controls:CustomListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                Margin="5">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                        Text="Nome"
+                                        FontSize="Medium"/>
+                                        <Label
+                                        Text="{Binding Nome}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                        Text="CPF"
+                                        FontSize="Medium"/>
+                                        <Label
+                                        Text="{Binding CPF}"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <BoxView
+                                    HeightRequest="1"
+                                    BackgroundColor="Purple"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </controls:CustomListView.ItemTemplate>
+                </controls:CustomListView>
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
 
 </ContentPage>
